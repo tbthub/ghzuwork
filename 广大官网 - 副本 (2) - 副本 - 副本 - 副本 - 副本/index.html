@@ -82,83 +82,15 @@
         </div>
         <ul id="navUl">
             <li>
-                <a href="#">学校概况</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">学校简介</div>
-                    <div class="drop-downBox">现任领导</div>
-                    <div class="drop-downBox">学校章程</div>
-                    <div class="drop-downBox">校训校徽校歌</div>
-                    <div class="drop-downBox">校园风景</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">组织机构</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">学院(部)</div>
-                    <div class="drop-downBox">管理服务机构</div>
-                    <div class="drop-downBox">科研单位</div>
-                    <div class="drop-downBox">直属单位</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">师资队伍</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">队伍概况</div>
-                    <div class="drop-downBox">人才招聘</div>
-                    <div class="drop-downBox">杰出人才</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">人才培养</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">本科生培养</div>
-                    <div class="drop-downBox">研究生培养</div>
-                    <div class="drop-downBox">留学生培养</div>
-                    <div class="drop-downBox">继续教育</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">招生就业</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">本科生招生</div>
-                    <div class="drop-downBox">研究生招生</div>
-                    <div class="drop-downBox">成人教育招生</div>
-                    <div class="drop-downBox">留学生招生</div>
-                    <div class="drop-downBox">就业指导</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">科学研究</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">科学研究简况</div>
-                    <div class="drop-downBox">重点科研平台</div>
-                    <div class="drop-downBox">学术期刊</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">学科建设</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">重点学科</div>
-                    <div class="drop-downBox">博士点</div>
-                    <div class="drop-downBox">学术硕士点</div>
-                    <div class="drop-downBox">专业硕士点</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">人才招聘</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">高层次人才招聘公告</div>
-                    <div class="drop-downBox">博士后招聘公告</div>
-                    <div class="drop-downBox">其他系列招聘公告</div>
-                </div>
-            </li>
-            <li>
-                <a href="#">合作交流</a>
-                <div class="sub-navBox">
-                    <div class="drop-downBox">国际交流与合作</div>
-                    <div class="drop-downBox">港澳台交流与合作</div>
-                </div>
-            </li>
+<!--                <a href="#">学校概况</a>-->
+<!--                <div class="sub-navBox">-->
+<!--                    <div class="drop-downBox">学校简介</div>-->
+<!--                    <div class="drop-downBox">现任领导</div>-->
+<!--                    <div class="drop-downBox">学校章程</div>-->
+<!--                    <div class="drop-downBox">校训校徽校歌</div>-->
+<!--                    <div class="drop-downBox">校园风景</div>-->
+<!--                </div>-->
+<!--            </li>-->
         </ul>
     </div>
     <div class="box">
@@ -192,9 +124,50 @@
     <img src="imags/onload/gzjsj.jpg" alt="">
 </div>
 <script>
-    //导航栏鼠标经过下拉框模块
-    //鼠标进入li
+
     const navUl = document.querySelector('#navUl')
+
+
+    //导航栏渲染
+    function navRender() {
+        let navArrHead = ['学校概况', '组织机构', '师资队伍', '人才培养', '招生就业', '科学研究', '学科建设', '人才招聘', '合作交流']
+        let subArr1 = ['学校简介', '现任领导', '学校章程', '校训校徽校歌', '校园风景']
+        let subArr2 = ['学院(部)', '管理服务机构', '科研单位', '直属单位']
+        let subArr3 = ['队伍概况', '人才招聘', '杰出人才']
+        let subArr4 = ['本科生培养', '研究生培养', '留学生培养', '继续教育']
+        let subArr5 = ['本科生招生', '研究生招生', '成人教育招生', '留学生招生', '就业指导']
+        let subArr6 = ['科学研究简况', '重点科研平台', '学术期刊']
+        let subArr7 = ['重点学科', '博士点', '学术硕士点', '专业硕士点']
+        let subArr8 = ['高层次人才招聘公告', '博士后招聘公告', '其他系列招聘公告']
+        let subArr9 = ['国际交流与合作', '港澳台交流与合作']
+        let subArr = [subArr1, subArr2, subArr3, subArr4, subArr5, subArr6, subArr7, subArr8, subArr9,]
+        let str = ''
+        for (let i = 0; i < navArrHead.length; i++)
+            str += `
+         <li>
+                <a href="#">${navArrHead[i]}</a>
+                <div class="sub-navBox">
+                   ${subArrContent(subArr[i])}
+                </div>
+         </li>
+        `
+        navUl.innerHTML = str
+    }
+
+    function subArrContent(arr) {
+        let str = ''
+        for (let i = 0; i < arr.length; i++) {
+            str += `<div class="drop-downBox">${arr[i]}</div>`
+        }
+        return str
+    }
+
+
+    navRender()
+
+
+    //导航栏鼠标经过下拉框模块================================================================================================
+
     navUl.addEventListener('mouseover', function (e) {
         if (e.target.tagName === 'LI') {
             const div = e.target.querySelector('.sub-navBox')
@@ -224,7 +197,7 @@
     }
 
 
-    // 点击搜索模块
+    // 点击搜索模块=====================================================================================
     const navTopLink = document.querySelector('.navTopLink')
     const searchIcon = document.querySelector('.searchIcon')
     const searchBox = document.querySelector('.searchBox')
@@ -243,14 +216,14 @@
     })
 
 
-    //广告模块
-
+    //广告模块=========================================================================================
     const ad = document.querySelector('#ad')
     let Wtag = true
     let Htag = true
     let myTop = 200
     let myLeft = 100
 
+    //广告移动=======================
     function move() {
         let speed = 1
         if (myLeft >= window.innerWidth - 510 || myLeft <= 0)//到边了,转向
@@ -273,6 +246,7 @@
     })
     const close = document.querySelector('.close')
 
+    //广告删除============================
     function myClose() {
         let arr = ['您真的要删除我吗?', '您真的确认要删除我了吗?', '能不能不要删除我?', '您真的确定吗?', '您是否要反悔吗?', '不要再往下面点了!', '欸,罢了罢了!']
         let dele = false
